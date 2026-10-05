@@ -1,4 +1,4 @@
-# DineBook Restaurant Booking & Fine Dining Club
+# DineBook - Restaurant Booking & Fine Dining Club
 
 Welcome to the frontend repository for **DineBook** – a modern, premium table booking and reservation platform designed for a seamless dining experience.
 
