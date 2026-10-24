@@ -16,13 +16,13 @@ export default function App() {
                 position="bottom-right"
                 toastOptions={{
                     style: {
-                        background: "#1a1c1c",
+                        background: "#20252c",
                         color: "#ffffff",
                         fontFamily: "Manrope, sans-serif",
                         fontSize: "12px",
                         letterSpacing: "0.02em",
                         borderRadius: "4px",
-                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        border: "1px solid rgba(236, 91, 32, 0.25)",
                     },
                 }}
             />
@@ -66,4 +66,3 @@ export default function App() {
         </>
     );
 }
-

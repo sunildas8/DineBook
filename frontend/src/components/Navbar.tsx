@@ -11,6 +11,7 @@ export default function Navbar() {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const lightHeader = location.pathname === "/" && !scrolled;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,32 +39,33 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md h-16 shadow-sm border-b border-outline-variant/10" : "bg-transparent h-20 border-b border-transparent"}`}
+            className={`site-nav fixed top-0 w-full z-40 transition-all duration-300 ${!lightHeader ? "bg-white/95 backdrop-blur-md h-16 shadow-sm border-b border-outline-variant/10" : "bg-transparent h-20 border-b border-transparent"}`}
         >
             <div className="max-w-7xl mx-auto flex justify-between items-center h-full px-6 md:px-10">
                 {/* Logo */}
                 <div className="flex items-center gap-12">
                     <Link to="/">
-                        <img src="/logo.svg" alt="Logo" className={`h-8.5 ${scrolled || (location.pathname === "/" && "invert")}`} />
+                    {/* <img src="/DineLogo.png" alt="Logo" className={`h-8.5 ${scrolled || (location.pathname === "/" && "invert")}`} /> */}
+                    <img src={lightHeader ? "/DineLogo2.png" : "/DineLogo.png"} alt="DineBook" className="h-10" />
                     </Link>
 
                     {/* Desktop Navigation Links */}
                     <div className="hidden md:flex gap-8 items-center">
                         <Link
                             to="/"
-                            className={`text-sm transition-colors pb-1 border-b-2 cursor-pointer ${location.pathname === "/" ? (scrolled ? "text-secondary border-secondary" : "text-white border-white") : "text-black/55 hover:text-primary border-transparent"}`}
+                            className={`text-sm transition-colors pb-1 border-b-2 cursor-pointer ${location.pathname === "/" ? (lightHeader ? "text-white border-white" : "text-secondary border-secondary") : "text-black/55 hover:text-secondary border-transparent"}`}
                         >
                             Discover
                         </Link>
                         <Link
                             to="/search"
-                            className={`text-sm transition-colors pb-1 border-b-2 border-transparent cursor-pointer ${location.pathname.startsWith("/search") ? "text-secondary border-secondary" : scrolled || location.pathname !== "/" ? "text-black/55 hover:text-primary" : "text-white/80 hover:text-white"}}`}
+                            className={`text-sm transition-colors pb-1 border-b-2 border-transparent cursor-pointer ${location.pathname.startsWith("/search") ? "text-secondary border-secondary" : lightHeader ? "text-white/80 hover:text-white" : "text-black/55 hover:text-secondary"}`}
                         >
                             Restaurants
                         </Link>
                         <button
                             onClick={handleDashboardClick}
-                            className={`text-sm transition-colors pb-1 border-b-2 border-transparent cursor-pointer text-left ${location.pathname === "/dashboard" ? "text-secondary border-secondary" : scrolled || location.pathname !== "/" ? "text-black/55 hover:text-primary" : "text-white/80 hover:text-white"}`}
+                            className={`text-sm transition-colors pb-1 border-b-2 border-transparent cursor-pointer text-left ${location.pathname === "/dashboard" ? "text-secondary border-secondary" : lightHeader ? "text-white/80 hover:text-white" : "text-black/55 hover:text-secondary"}`}
                         >
                             My Bookings
                         </button>
@@ -76,12 +78,12 @@ export default function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                                className={`flex items-center gap-2 text-sm transition-colors cursor-pointer ${scrolled || location.pathname !== "/" ? "text-secondary" : "text-white"}`}
+                                className={`flex items-center gap-2 text-sm transition-colors cursor-pointer ${lightHeader ? "text-white" : "text-secondary"}`}
                             >
                                 <span className="size-7 rounded-full bg-secondary/20 border flex items-center justify-center text-xs uppercase">
                                     {user.name.charAt(0)}
                                 </span>
-                                <span className="max-w-[120px] truncate">{user.name.split(" ")[0]}</span>
+                                <span className="max-w-30 truncate">{user.name.split(" ")[0]}</span>
                             </button>
 
                             {/* Dropdown Menu */}
@@ -132,13 +134,13 @@ export default function Navbar() {
                         <>
                             <button
                                 onClick={() => setAuthModalOpen(true)}
-                                className={`text-sm transition-colors cursor-pointer ${scrolled || location.pathname !== "/" ? "text-black/55 hover:text-primary" : "text-white/80 hover:text-white"}`}
+                                className={`text-sm transition-colors cursor-pointer ${lightHeader ? "text-white/80 hover:text-white" : "text-black/55 hover:text-secondary"}`}
                             >
                                 Sign In
                             </button>
                             <button
                                 onClick={() => setAuthModalOpen(true)}
-                                className={`text-xs font-medium tracking-wider uppercase px-5 py-2.5 transition-soft cursor-pointer ${scrolled || location.pathname !== "/" ? "bg-primary text-white hover:bg-primary-container hover:text-secondary" : "bg-white text-primary hover:bg-secondary hover:text-white"}`}
+                                className={`text-xs font-medium tracking-wider uppercase px-5 py-2.5 transition-soft cursor-pointer rounded-full ${lightHeader ? "bg-white text-primary hover:bg-secondary hover:text-white" : "bg-secondary text-white hover:bg-primary"}`}
                             >
                                 Sign Up
                             </button>
@@ -150,7 +152,7 @@ export default function Navbar() {
                 <div className="flex items-center md:hidden">
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className={`p-2 transition-colors cursor-pointer ${scrolled || location.pathname !== "/" ? "text-primary" : "text-white"}`}
+                        className={`p-2 transition-colors cursor-pointer ${lightHeader ? "text-white" : "text-primary"}`}
                         aria-label="Toggle Menu"
                     >
                         {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

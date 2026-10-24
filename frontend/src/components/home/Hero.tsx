@@ -24,7 +24,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="home-hero relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img alt="Elegant Dining Room" className="w-full h-full object-cover brightness-70" src={assets.hero_bg_img} />
@@ -33,17 +33,20 @@ export default function Hero() {
 
             {/* Content */}
             <div className="relative z-10 w-full max-w-7xl px-6 md:px-10 text-center">
-                <span className="text-sm text-secondary-container tracking-[0.25em] uppercase block mb-4">
-                    EXQUISITE DINING EXPERIENCES
+                <span className="text-sm text-secondary-container tracking-[0.25em] uppercase block mb-4 animate-in fade-in slide-in-from-bottom-2 duration-700">
+                    GOOD FOOD. GREAT COMPANY.
                 </span>
-                <h1 className="font-display text-4xl md:text-6xl text-white mb-12 max-w-3xl mx-auto leading-[1.15] font-medium tracking-tight drop-shadow-md">
-                    Curation for the Discerning Palette
+                <h1 className="font-display text-4xl md:text-6xl text-white mb-5 max-w-4xl mx-auto leading-[1.12] font-medium tracking-tight drop-shadow-md">
+                    Make room for <span className="text-secondary-container italic">something delicious.</span>
                 </h1>
+                <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto mb-9 leading-relaxed">
+                    Find your next favorite table, from neighborhood gems to the city's most celebrated kitchens.
+                </p>
 
                 {/* Search Bar Component */}
                 <form
                     onSubmit={handleSearchSubmit}
-                    className="bg-white p-3 md:p-2.5 ambient-shadow max-w-4xl mx-auto flex flex-col md:flex-row gap-2 "
+                    className="bg-white p-3 md:p-2.5 ambient-shadow max-w-5xl mx-auto flex flex-col md:flex-row gap-2 rounded-2xl"
                 >
                     {/* Search Term / Cuisine */}
                     <div className="flex-1 flex items-center border-b md:border-b-0 md:border-r border-outline-variant/30 px-4 py-3">
@@ -98,7 +101,7 @@ export default function Hero() {
 
                     <button
                         type="submit"
-                        className="bg-primary text-on-primary text-xs tracking-widest uppercase px-8 py-4 md:py-3 hover:bg-secondary hover:text-white transition-soft cursor-pointer"
+                        className="bg-secondary text-on-primary text-xs tracking-widest uppercase px-8 py-4 md:py-3 hover:bg-primary hover:text-white transition-soft cursor-pointer rounded-xl"
                     >
                         FIND A TABLE
                     </button>
